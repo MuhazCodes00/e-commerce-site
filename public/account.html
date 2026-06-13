@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account — M.O.B Eki Ventures</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .order-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius-md); padding:20px 24px; margin-bottom:12px; transition:border-color .2s,box-shadow .2s; }
+    .order-card:hover { border-color:var(--blue-light); box-shadow:var(--shadow-sm); }
+    .order-card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
+    .order-num { font-size:15px; font-weight:800; letter-spacing:.04em; color:var(--text-dark); }
+    .order-price { font-size:16px; font-weight:800; color:var(--text-dark); }
+    .order-meta { font-size:12px; color:var(--text-muted); margin-bottom:12px; }
+    .order-actions { display:flex; gap:16px; padding-top:12px; border-top:1px solid var(--border-light); }
+    .order-action-btn { font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; background:none; border:none; cursor:pointer; color:var(--blue); padding:0; transition:opacity .2s; }
+    .order-action-btn:hover { opacity:.7; }
+    .order-action-btn.secondary { color:var(--text-muted); }
+    .address-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .address-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius-md); padding:20px; transition:border-color .2s; }
+    .address-card.default { border-color:var(--blue); background:var(--blue-pale); }
+    .address-card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .address-type { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--blue-dark); }
+    .address-text { font-size:14px; color:var(--text-mid); line-height:1.65; margin-bottom:14px; }
+    .address-actions { display:flex; gap:14px; }
+    .address-btn { font-size:12px; font-weight:700; background:none; border:none; cursor:pointer; padding:0; letter-spacing:.06em; text-transform:uppercase; }
+    .address-btn.edit { color:var(--blue); }
+    .address-btn.default-btn { color:var(--text-muted); }
+    .address-btn.remove { color:var(--danger); }
+    .add-address-btn { display:flex; align-items:center; gap:8px; background:var(--blue); color:var(--white); border:none; padding:10px 20px; border-radius:var(--radius-pill); font-size:13px; font-weight:700; cursor:pointer; transition:all .2s; box-shadow:0 4px 12px rgba(21,101,192,0.25); }
+    .add-address-btn:hover { background:var(--blue-dark); transform:translateY(-1px); }
+    .saved-item { display:flex; align-items:center; gap:16px; padding:16px; background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius-md); margin-bottom:12px; transition:border-color .2s; }
+    .saved-item:hover { border-color:var(--blue-light); }
+    .saved-item img { width:60px; height:52px; object-fit:cover; border-radius:var(--radius); }
+    .saved-item-name { font-size:15px; font-weight:700; }
+    .saved-item-price { font-size:13px; color:var(--text-muted); }
+    .profile-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:28px; max-width:520px; box-shadow:var(--shadow-sm); }
+
+    /* 3D order cards */
+    .order-card{transition:all .3s cubic-bezier(.34,1.56,.64,1);transform-style:preserve-3d}
+    .order-card:hover{transform:translateY(-4px) rotateX(1deg);box-shadow:var(--shadow-md);border-color:rgba(100,181,246,.4)}
+    /* Gradient order number */
+    .order-num{background:linear-gradient(135deg,var(--ocean),var(--blue-mid));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    /* 3D address cards */
+    .address-card{transition:all .3s cubic-bezier(.34,1.56,.64,1);transform-style:preserve-3d}
+    .address-card:hover{transform:translateY(-4px) rotateX(2deg);box-shadow:var(--shadow-md)}
+    .address-card.default{background:linear-gradient(135deg,var(--blue-pale),rgba(100,181,246,.1));border-color:rgba(21,101,192,.4)}
+    /* Profile card glass */
+    .profile-card{backdrop-filter:blur(12px);background:rgba(255,255,255,.92)}
+    /* Add address btn */
+    .add-address-btn{background:linear-gradient(135deg,var(--blue),var(--blue-mid));box-shadow:0 4px 16px rgba(21,101,192,.3)}
+    .add-address-btn:hover{box-shadow:0 8px 24px rgba(21,101,192,.45),var(--glow)}
+    /* Saved item hover */
+    .saved-item{transition:all .3s cubic-bezier(.34,1.56,.64,1);backdrop-filter:blur(4px)}
+    .saved-item:hover{transform:translateX(4px);box-shadow:var(--shadow);border-color:rgba(100,181,246,.4)}
+    /* Account sidebar glass */
+    .account-sidebar{background:rgba(255,255,255,.88)}
+    /* Bg orbs */
+    .account-layout{position:relative}
+
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<div style="background:var(--light-bg);min-height:calc(100vh - 200px);position:relative;overflow:hidden"><div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(100,181,246,.08),transparent);top:0;right:-100px;animation:orb-drift 20s ease-in-out infinite"></div><div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(21,101,192,.06),transparent);bottom:0;left:-80px;animation:orb-drift2 25s ease-in-out infinite"></div>
+  <div class="account-layout">
+    <aside class="account-sidebar">
+      <a class="account-nav-item active" id="nav-orders" onclick="switchTab('orders')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        My Orders
+      </a>
+      <a class="account-nav-item" id="nav-saved" onclick="switchTab('saved')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Saved Items
+      </a>
+      <a class="account-nav-item" id="nav-addresses" onclick="switchTab('addresses')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Addresses
+      </a>
+      <a class="account-nav-item" id="nav-profile" onclick="switchTab('profile')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        Profile Settings
+      </a>
+      <hr class="account-nav-divider">
+      <a class="account-nav-item signout" href="../index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </a>
+    </aside>
+    <div class="account-content">
+      <div id="tab-orders">
+        <h2>My Orders</h2>
+        <div id="orders-list"></div>
+      </div>
+      <div id="tab-saved" style="display:none">
+        <h2>Saved Items</h2>
+        <div id="saved-list"></div>
+      </div>
+      <div id="tab-addresses" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+          <h2 style="margin-bottom:0">Delivery Addresses</h2>
+          <button class="add-address-btn" onclick="showToast('Address form coming soon')">+ Add Address</button>
+        </div>
+        <div class="address-grid" id="address-list"></div>
+      </div>
+      <div id="tab-profile" style="display:none">
+        <h2>Profile Settings</h2>
+        <div class="profile-card">
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">First Name</label><input class="form-input" value="Emeka"></div>
+            <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" value="Okafor"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" value="emeka.okafor@example.com"></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" value="0803 456 7890"></div>
+          <button class="btn btn-primary" onclick="showToast('Profile saved successfully')">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="site-footer"></div>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/components.js"></script>
+<script>
+  renderHeader('../'); renderFooter('../');
+  function switchTab(tab) {
+    ['orders','saved','addresses','profile'].forEach(t => {
+      document.getElementById('tab-'+t).style.display = t===tab ? 'block' : 'none';
+      document.getElementById('nav-'+t).classList.toggle('active', t===tab);
+    });
+  }
+  function renderUserOrders() {
+    const orders = DB.getOrders();
+    const listEl = document.getElementById('orders-list');
+    listEl.innerHTML = '';
+    
+    if (orders.length === 0) {
+      listEl.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-muted);">No orders found.</div>';
+      return;
+    }
+
+    orders.forEach(o => {
+      let itemsCount = 0;
+      if (Array.isArray(o.items)) {
+        itemsCount = o.items.reduce((sum, item) => sum + item.qty, 0);
+      } else {
+        itemsCount = Number(o.items) || 0;
+      }
+      
+      let badgeClass = 'badge-transit';
+      if (o.status === 'Delivered') badgeClass = 'badge-success';
+      else if (o.status === 'Pending') badgeClass = 'badge-transit'; // fallback
+
+      listEl.innerHTML += `
+        <div class="order-card">
+          <div class="order-card-top">
+            <div><div class="order-num">${o.id}</div><div class="order-meta">${o.date} · ${itemsCount} item${itemsCount>1?'s':''}</div></div>
+            <div style="text-align:right"><div class="order-price">₦${o.total.toLocaleString()}</div><span class="badge ${badgeClass}" style="margin-top:6px;font-size:10px">${o.status}</span></div>
+          </div>
+          <div class="order-actions">
+            <button class="order-action-btn" onclick="showOrderDetails('${o.id}')">View Details</button>
+            <button class="order-action-btn secondary" onclick="reorder('${o.id}')">Reorder</button>
+          </div>
+        </div>`;
+    });
+  }
+
+  window.showOrderDetails = function(orderId) {
+    const orders = DB.getOrders();
+    const o = orders.find(x => x.id === orderId);
+    if (!o) return;
+    
+    let itemsList = '';
+    if (Array.isArray(o.items)) {
+      itemsList = o.items.map(item => `${item.name} (x${item.qty})`).join(', ');
+    } else {
+      itemsList = 'Items list is empty or unavailable';
+    }
+    alert(`Order details for ${o.id}:\nCustomer: ${o.customerName}\nAddress: ${o.address}, ${o.city}, ${o.state}\nItems: ${itemsList}\nStatus: ${o.status}\nTotal: ₦${o.total.toLocaleString()}`);
+  };
+
+  window.reorder = function(orderId) {
+    const orders = DB.getOrders();
+    const o = orders.find(x => x.id === orderId);
+    if (!o) return;
+    
+    if (Array.isArray(o.items)) {
+      o.items.forEach(item => {
+        Cart.add({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          unit: item.unit,
+          img: item.img,
+          qty: item.qty
+        });
+      });
+      showToast('Items added to cart!');
+    }
+  };
+
+  window.addEventListener('mob_orders_changed', renderUserOrders);
+  renderUserOrders();
+  [{ id:1,name:'Dangote 42.5R Cement',price:9500,unit:'bag' },{ id:10,name:'Dulux Weathershield 4L',price:14500,unit:'tin' }].forEach(item => {
+    const p = PRODUCTS.find(x => x.id===item.id);
+    document.getElementById('saved-list').innerHTML += `
+      <div class="saved-item">
+        <img src="${p?.img||''}" alt="${item.name}">
+        <div style="flex:1"><div class="saved-item-name">${item.name}</div><div class="saved-item-price">₦${item.price.toLocaleString()} per ${item.unit}</div></div>
+        <button class="btn-add-cart" style="width:auto;padding:10px 20px" onclick="Cart.add({id:${item.id},name:'${item.name}',price:${item.price},unit:'${item.unit}',img:'${p?.img||''}'})">Add to Cart</button>
+      </div>`;
+  });
+  [{ type:'Home',addr:'15 Adeola Odeku Street, Victoria Island, Lagos',def:true },{ type:'Site Office',addr:'Plot 23, Industrial Layout, Ikeja, Lagos',def:false }].forEach(a => {
+    document.getElementById('address-list').innerHTML += `
+      <div class="address-card ${a.def?'default':''}">
+        <div class="address-card-header">
+          <span class="address-type">${a.type}</span>
+          ${a.def ? '<span class="badge badge-blue" style="font-size:10px">Default</span>' : ''}
+        </div>
+        <div class="address-text">${a.addr}</div>
+        <div class="address-actions">
+          <button class="address-btn edit" onclick="showToast('Edit address')">Edit</button>
+          ${!a.def ? '<button class="address-btn default-btn" onclick="showToast(\'Set as default\')">Set as Default</button>' : ''}
+          ${!a.def ? '<button class="address-btn remove" onclick="showToast(\'Address removed\')">Remove</button>' : ''}
+        </div>
+      </div>`;
+  });
+  const hash = window.location.hash.replace('#','');
+  if (['orders','saved','addresses','profile'].includes(hash)) switchTab(hash);
+</script>
+</body>
+</html>

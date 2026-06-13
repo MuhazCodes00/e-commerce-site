@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — M.O.B Eki Ventures</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .about-hero { background: linear-gradient(135deg,var(--blue-dark) 0%,var(--blue-mid) 100%); padding: 80px 0; position: relative; overflow: hidden; }
+    .about-hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80'); background-size: cover; opacity: 0.08; }
+    .about-hero-inner { position: relative; max-width: 720px; margin: 0 auto; padding: 0 32px; text-align: center; }
+    .about-hero-inner h1 { font-family: var(--font-display); font-size: clamp(34px,5vw,58px); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+    .about-hero-inner p { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.75; }
+    .story-section { padding: 80px 0; background: var(--white); }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .story-img { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--shadow-md); }
+    .story-img img { width: 100%; height: 100%; object-fit: cover; }
+    .story-content h2 { font-family: var(--font-display); font-size: clamp(26px,3vw,38px); font-weight: 700; margin-bottom: 20px; line-height: 1.15; }
+    .story-content p { font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 16px; }
+    .stats-strip { background: linear-gradient(135deg,var(--blue-dark) 0%,var(--blue) 100%); padding: 56px 0; }
+    .stats-strip-inner { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; max-width: 1280px; margin: 0 auto; padding: 0 32px; text-align: center; }
+    .stat-item-num { font-size: 44px; font-weight: 800; color: #90caf9; line-height: 1; margin-bottom: 8px; }
+    .stat-item-label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+    .team-section { padding: 80px 0; background: var(--light-bg); }
+    .team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .team-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; text-align: center; transition: all .25s cubic-bezier(.34,1.56,.64,1); }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--blue-light); }
+    .team-card-img { aspect-ratio: 1; overflow: hidden; background: var(--blue-pale); }
+    .team-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .team-card:hover .team-card-img img { transform: scale(1.06); }
+    .team-card-body { padding: 20px; }
+    .team-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .team-role { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-mid); }
+    .contact-section { padding: 80px 0; background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .contact-info h2 { font-family: var(--font-display); font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+    .contact-info p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+    .contact-detail { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+    .contact-icon { font-size: 20px; flex-shrink: 0; width: 40px; height: 40px; background: var(--blue-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .contact-detail strong { display: block; font-size: 13px; font-weight: 700; margin-bottom: 2px; color: var(--text-dark); }
+    .contact-detail span { font-size: 13px; color: var(--text-muted); }
+    .contact-form { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-sm); }
+    .contact-form h3 { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+    textarea.form-input { min-height: 120px; resize: vertical; }
+    /* Hero orbs */
+    .about-hero{position:relative;overflow:hidden}
+    .about-hero::after{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(100,181,246,.15),transparent);border-radius:50%;top:-200px;right:-150px;filter:blur(40px);pointer-events:none}
+    /* Story img 3D */
+    .story-img{transition:transform .4s,box-shadow .4s;transform-style:preserve-3d}
+    .story-img:hover{transform:perspective(800px) rotateY(-4deg) rotateX(2deg) scale(1.01);box-shadow:var(--shadow-3d)}
+    /* Stats strip enhanced */
+    .stats-strip{position:relative;overflow:hidden}
+    .stats-strip::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+    .stat-item-num{text-shadow:0 0 24px rgba(100,181,246,.5)}
+    /* Team cards 3D */
+    .team-card{transform-style:preserve-3d}
+    .team-card:hover{transform:translateY(-10px) rotateX(4deg) scale(1.02);box-shadow:var(--shadow-3d)}
+    /* Contact icon 3D */
+    .contact-icon{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+    .contact-detail:hover .contact-icon{transform:perspective(300px) rotateY(15deg) scale(1.1);box-shadow:0 4px 16px rgba(21,101,192,.25)}
+    /* Contact form glass */
+    .contact-form{backdrop-filter:blur(16px);background:rgba(255,255,255,.92)}
+
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="about-hero">
+  <div class="about-hero-bg"></div>
+  <div class="about-hero-inner">
+    <span class="section-label" style="color:#90caf9;justify-content:center;display:flex;margin-bottom:12px">Our Story</span>
+    <h1>Building Nigeria, One Project at a Time</h1>
+    <p>Since 2009, M.O.B Eki Ventures has been the trusted partner for construction professionals and homebuilders across Nigeria.</p>
+  </div>
+</div>
+<section class="story-section">
+  <div class="story-grid">
+    <div class="story-img"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=700&q=80" alt="Warehouse"></div>
+    <div class="story-content">
+      <span class="section-label">Who We Are</span>
+      <h2>Premium Materials, Trusted Since 2009</h2>
+      <p>M.O.B Eki Ventures started as a small cement distributor in Ikeja, Lagos. Over 15 years, we've grown into one of Nigeria's most comprehensive building materials suppliers, serving over 3,400 active clients nationwide.</p>
+      <p>We partner directly with leading manufacturers including Dangote, BUA, Dulux, and other certified brands to ensure every product meets the highest quality standards.</p>
+      <p>Whether you're building a family home, a commercial complex, or an industrial facility, our team is ready to source the right materials at competitive prices.</p>
+      <a href="#contact" class="btn btn-primary" style="margin-top:8px">Get in Touch</a>
+    </div>
+  </div>
+</section>
+<section class="stats-strip">
+  <div class="stats-strip-inner">
+    <div><div class="stat-item-num">500+</div><div class="stat-item-label">Products Available</div></div>
+    <div><div class="stat-item-num">12,000+</div><div class="stat-item-label">Orders Delivered</div></div>
+    <div><div class="stat-item-num">3,400+</div><div class="stat-item-label">Active Clients</div></div>
+    <div><div class="stat-item-num">15+</div><div class="stat-item-label">Years in Business</div></div>
+  </div>
+</section>
+<section class="team-section">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+    <div style="text-align:center;margin-bottom:40px">
+      <span class="section-label">The Team</span>
+      <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700">People Behind the Brand</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><div class="team-card-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="CEO"></div><div class="team-card-body"><div class="team-name">Musa O. Bello</div><div class="team-role">Founder & CEO</div></div></div>
+      <div class="team-card"><div class="team-card-img"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Ops"></div><div class="team-card-body"><div class="team-name">Adaeze Okonkwo</div><div class="team-role">Head of Operations</div></div></div>
+      <div class="team-card"><div class="team-card-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Sales"></div><div class="team-card-body"><div class="team-name">Emeka Nwosu</div><div class="team-role">Head of Sales</div></div></div>
+    </div>
+  </div>
+</section>
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <span class="section-label">Get in Touch</span>
+      <h2>Let's Talk About Your Project</h2>
+      <p>Whether you need a price list, bulk quote, or technical advice, our team is ready to help.</p>
+      <div class="contact-detail"><span class="contact-icon">📍</span><div><strong>Address</strong><span>Plot 23, Industrial Layout, Ikeja, Lagos</span></div></div>
+      <div class="contact-detail"><span class="contact-icon">📞</span><div><strong>Phone / WhatsApp</strong><span>0803 456 7890 · 0701 234 5678</span></div></div>
+      <div class="contact-detail"><span class="contact-icon">✉️</span><div><strong>Email</strong><span>info@mobeki.com</span></div></div>
+      <div class="contact-detail"><span class="contact-icon">🕐</span><div><strong>Working Hours</strong><span>Monday – Saturday: 8am – 6pm</span></div></div>
+    </div>
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="c-name" placeholder="Your full name"></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="c-phone" placeholder="08XXXXXXXXX"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="c-email" type="email" placeholder="you@example.com"></div>
+      <div class="form-group"><label class="form-label">Subject</label>
+        <select class="form-input"><option>Bulk Order Inquiry</option><option>Price Quote</option><option>Product Availability</option><option>Delivery Info</option><option>Other</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" id="c-msg" placeholder="Describe your project or inquiry..."></textarea></div>
+      <button class="btn btn-primary btn-full" onclick="submitContact()">Send Message →</button>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/components.js"></script>
+<script>
+  renderHeader('../'); renderFooter('../');
+  function submitContact() {
+    const name = document.getElementById('c-name').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    if (!name || !email) { showToast('Please fill in your name and email'); return; }
+    showToast("Message sent! We'll respond within 24 hours.");
+    ['c-name','c-phone','c-email','c-msg'].forEach(id => document.getElementById(id).value = '');
+  }
+</script>
+</body>
+</html>

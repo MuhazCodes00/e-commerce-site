@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — M.O.B Eki Ventures</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-wrapper">
+  
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">MOB</div>
+        <div class="logo-text"><strong>M.O.B EKI</strong><span>Ventures</span></div>
+      </a>
+    </div>
+    
+    <nav class="admin-nav">
+      <div class="admin-nav-item active" data-tab="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Overview
+      </div>
+      <div class="admin-nav-item" data-tab="orders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Orders Log
+      </div>
+      <div class="admin-nav-item" data-tab="products">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        Product Catalog
+      </div>
+      <div class="admin-nav-item" data-tab="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Config Settings
+      </div>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      M.O.B Eki Ventures v1.0
+    </div>
+  </aside>
+
+  <!-- Main View -->
+  <main class="admin-main">
+    
+    <!-- Top Header -->
+    <header class="admin-header">
+      <div class="admin-title-area">
+        <h1 id="admin-view-title">Dashboard Overview</h1>
+      </div>
+      <div class="admin-user-profile">
+        <div class="admin-avatar">AD</div>
+        <div class="admin-user-info">
+          <span class="admin-user-name">Manager Account</span>
+          <span class="admin-user-role">Administrator</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Views -->
+
+    <!-- Tab 1: Overview Dashboard -->
+    <section class="admin-content-view active" id="view-overview">
+      <div class="admin-kpi-grid">
+        <div class="kpi-card">
+          <div>
+            <div class="kpi-title">Total Revenue</div>
+            <div class="kpi-value" id="kpi-revenue">₦0</div>
+          </div>
+          <div class="kpi-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div>
+            <div class="kpi-title">Total Orders</div>
+            <div class="kpi-value" id="kpi-orders">0</div>
+          </div>
+          <div class="kpi-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div>
+            <div class="kpi-title">Average Order Value</div>
+            <div class="kpi-value" id="kpi-aov">₦0</div>
+          </div>
+          <div class="kpi-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div>
+            <div class="kpi-title">Active Products</div>
+            <div class="kpi-value" id="kpi-products">0</div>
+          </div>
+          <div class="kpi-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-dash-columns">
+        <!-- Warnings panel -->
+        <div class="dash-panel">
+          <div class="dash-panel-header">
+            <h3 class="dash-panel-title">Low Stock Warnings ⚠️</h3>
+            <span class="badge badge-amber" style="font-size:11px">Stock Alert Limit: 10</span>
+          </div>
+          <div class="warning-list" id="stock-warnings-list">
+            <!-- Warnings are loaded dynamically -->
+          </div>
+        </div>
+
+        <!-- Recent activity -->
+        <div class="dash-panel">
+          <div class="dash-panel-header">
+            <h3 class="dash-panel-title">Recent Order Activity</h3>
+          </div>
+          <div class="recent-activity-list" id="recent-activity-list">
+            <!-- Loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: Orders Log -->
+    <section class="admin-content-view" id="view-orders">
+      <div class="toolbar-flex">
+        <div class="search-filter-group">
+          <input type="text" class="search-filter-input" id="orders-search" placeholder="Search by Order ID or Customer Name...">
+          <select class="sort-select" id="orders-status-filter" style="border-radius: var(--radius-pill); padding: 10px 32px 10px 16px;">
+            <option value="">All Statuses</option>
+            <option value="Pending">Pending</option>
+            <option value="In Transit">In Transit</option>
+            <option value="Delivered">Delivered</option>
+          </select>
+        </div>
+        <div class="results-count" id="orders-count-text">0 orders total</div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Date</th>
+              <th>Customer</th>
+              <th>State / LGA</th>
+              <th>Order Items</th>
+              <th>Total Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="admin-orders-tbody">
+            <!-- Orders dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tab 3: Product Catalog -->
+    <section class="admin-content-view" id="view-products">
+      <div class="toolbar-flex">
+        <div class="search-filter-group">
+          <input type="text" class="search-filter-input" id="products-search" placeholder="Search by name...">
+          <select class="sort-select" id="products-category-filter" style="border-radius: var(--radius-pill); padding: 10px 32px 10px 16px;">
+            <option value="">All Categories</option>
+            <!-- Categories loaded dynamically -->
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="openAddProductModal()">+ Add New Product</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Unit</th>
+              <th>Badge</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-products-tbody">
+            <!-- Products dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tab 4: Config Settings -->
+    <section class="admin-content-view" id="view-settings">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:32px;">
+        
+        <!-- Firebase Settings -->
+        <div class="form-card">
+          <h3 style="font-family:var(--font-display); font-size:20px; font-weight:800; color:var(--blue-dark); margin-bottom:20px; border-bottom:1px solid var(--border-light); padding-bottom:12px;">Firebase Firestore Connection</h3>
+          <div class="form-group">
+            <label class="form-label">Firebase API Key</label>
+            <input class="form-input" id="settings-db-api-key" type="password" placeholder="AIzaSyA1...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Firebase Project ID</label>
+            <input class="form-input" id="settings-db-project-id" placeholder="mob-ventures-project">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Firebase App ID (Optional)</label>
+            <input class="form-input" id="settings-db-app-id" placeholder="1:1234567890:web:abc123xyz">
+          </div>
+          <div style="display:flex; gap:12px; margin-top:20px;">
+            <button class="btn btn-primary" onclick="saveDatabaseSettings()">Save & Connect Firebase</button>
+            <button class="btn btn-outline-blue" onclick="testDatabaseSync()">Sync Firestore Now</button>
+          </div>
+        </div>
+
+        <!-- Store logistics settings -->
+        <div class="form-card">
+          <h3 style="font-family:var(--font-display); font-size:20px; font-weight:800; color:var(--blue-dark); margin-bottom:20px; border-bottom:1px solid var(--border-light); padding-bottom:12px;">Logistics & Delivery Fees</h3>
+          <div class="form-group">
+            <label class="form-label">Standard Delivery Fee (₦)</label>
+            <input class="form-input" id="settings-dfee" type="number" placeholder="25000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Free Delivery Threshold (₦)</label>
+            <input class="form-input" id="settings-free" type="number" placeholder="500000">
+          </div>
+          <button class="btn btn-primary" onclick="saveLogisticsSettings()" style="margin-top:20px;">Save Logistics Settings</button>
+        </div>
+
+        <!-- Firebase Rules Helper (Full Width Row) -->
+        <div class="form-card" style="grid-column: 1 / -1; max-width: 100%;">
+          <h3 style="font-family:var(--font-display); font-size:20px; font-weight:800; color:var(--blue-dark); margin-bottom:12px; border-bottom:1px solid var(--border-light); padding-bottom:12px;">Cloud Firestore Security Rules</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">To enable read/write actions from the storefront browser, make sure your Cloud Firestore rules allow read and write operations. Paste this in your **Firebase Console ➔ Firestore Database ➔ Rules** tab:</p>
+          <div class="code-snippet-box" style="user-select: all;">
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Modal Dialog: Add/Edit Product -->
+<div class="modal-overlay" id="product-modal-overlay">
+  <div class="admin-modal">
+    <div class="modal-header">
+      <h3 id="modal-product-title">Add New Product</h3>
+      <span class="modal-close-btn" onclick="closeProductModal()">×</span>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="prod-id">
+      
+      <div class="form-group">
+        <label class="form-label">Product Name</label>
+        <input class="form-input" id="prod-name" placeholder="Dangote 42.5R Cement">
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select class="form-input" id="prod-category">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Product Badge</label>
+          <input class="form-input" id="prod-badge" placeholder="Best Seller">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Price (₦)</label>
+          <input class="form-input" id="prod-price" type="number" placeholder="9500">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pricing Unit</label>
+          <input class="form-input" id="prod-unit" placeholder="bag">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Initial Stock Level</label>
+          <input class="form-input" id="prod-stock" type="number" value="25" placeholder="25">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Image URL</label>
+          <input class="form-input" id="prod-img" placeholder="https://images.unsplash.com/...">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline-blue" onclick="closeProductModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="submitProductForm()">Save Product</button>
+    </div>
+  </div>
+</div>
+
+<script src="../scripts/main.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

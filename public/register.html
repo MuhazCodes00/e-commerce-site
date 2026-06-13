@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — M.O.B Eki Ventures</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    body{min-height:100vh;background:linear-gradient(135deg,#040e20 0%,var(--ocean) 40%,var(--blue-dark) 100%);display:flex;flex-direction:column}
+    .auth-page{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 20px;position:relative;overflow:hidden}
+    .auth-card{background:rgba(255,255,255,.95);border:1px solid rgba(100,181,246,.2);border-radius:var(--radius-xl);padding:48px;width:100%;max-width:480px;box-shadow:var(--shadow-3d);backdrop-filter:blur(20px);position:relative;z-index:2;animation:fadeUp .6s cubic-bezier(.34,1.56,.64,1) both}
+    .auth-logo{text-align:center;margin-bottom:28px}
+    .auth-logo .logo-mark{width:52px;height:52px;font-size:14px;margin:0 auto 10px;background:linear-gradient(135deg,var(--blue-light),var(--blue-dark));box-shadow:var(--glow)}
+    .auth-logo strong{display:block;font-size:17px;font-weight:800;background:linear-gradient(135deg,var(--ocean),var(--blue-mid));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .auth-logo span{font-size:11px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase}
+    .auth-title{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text-dark);margin-bottom:6px;text-align:center}
+    .auth-sub{font-size:14px;color:var(--text-muted);text-align:center;margin-bottom:28px}
+    .auth-footer{text-align:center;margin-top:20px;font-size:13px;color:var(--text-muted)}
+    .auth-footer a{color:var(--blue);font-weight:600;text-decoration:none}
+    .auth-footer a:hover{text-decoration:underline}
+    .terms-note{font-size:11px;color:var(--text-muted);text-align:center;margin-top:16px}
+    .terms-note a{color:var(--blue)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(32px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="auth-page">
+  <div class="orb orb-1" style="top:-80px;right:10%;opacity:.5"></div>
+  <div class="orb orb-2" style="bottom:-60px;left:15%;opacity:.4"></div>
+
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="logo-mark">MOB</div>
+      <strong>M.O.B EKI VENTURES</strong>
+      <span>Building Materials</span>
+    </div>
+    <h2 class="auth-title">Create Account</h2>
+    <p class="auth-sub">Join thousands of builders across Nigeria</p>
+
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">First Name</label><input class="form-input" id="fname" placeholder="Emeka"></div>
+      <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" id="lname" placeholder="Okafor"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" id="email" placeholder="you@example.com"></div>
+    <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" id="phone" placeholder="0803 456 7890"></div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" id="password" placeholder="Create a strong password"></div>
+    <div class="form-group"><label class="form-label">Confirm Password</label><input class="form-input" type="password" id="confirm" placeholder="Repeat your password"></div>
+
+    <button class="btn btn-primary btn-full" onclick="handleRegister()" style="padding:15px;font-size:14px;margin-top:4px">Create Account →</button>
+    <p class="terms-note">By creating an account, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a></p>
+    <div class="auth-footer">Already have an account? <a href="login.html">Sign in</a></div>
+  </div>
+</div>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/components.js"></script>
+<script>
+  renderHeader('../');
+  function handleRegister() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const pass  = document.getElementById('password').value;
+    const conf  = document.getElementById('confirm').value;
+    if (!fname || !email || !pass) { showToast('Please fill in all fields'); return; }
+    if (pass !== conf) { showToast('Passwords do not match'); return; }
+    if (pass.length < 6) { showToast('Password must be at least 6 characters'); return; }
+    showToast('Account created! Welcome 🎉');
+    setTimeout(() => window.location.href = 'account.html', 1200);
+  }
+</script>
+</body>
+</html>

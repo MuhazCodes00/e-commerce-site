@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product — M.O.B Eki Ventures</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .product-detail-layout { max-width: 1280px; margin: 0 auto; padding: 48px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .product-img-main { aspect-ratio: 4/3; border-radius: var(--radius-lg); overflow: hidden; background: var(--blue-pale); position: relative; box-shadow: var(--shadow); }
+    .product-img-main img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .product-img-main:hover img { transform: scale(1.04); }
+    .product-img-main .badge { position: absolute; top: 14px; left: 14px; }
+    .breadcrumb { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--blue); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .product-title { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 700; color: var(--text-dark); line-height: 1.2; margin-bottom: 12px; }
+    .product-price-block { padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+    .big-price { font-size: 38px; font-weight: 800; color: var(--text-dark); }
+    .big-price-unit { font-size: 15px; color: var(--text-muted); margin-left: 6px; }
+    .qty-row { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .qty-label { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+    .qty-control { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: var(--radius-pill); overflow: hidden; background: var(--white); }
+    .qty-btn { width: 38px; height: 38px; background: none; border: none; cursor: pointer; font-size: 18px; color: var(--blue); transition: background .15s; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+    .qty-btn:hover { background: var(--blue-pale); }
+    .qty-display { width: 48px; text-align: center; font-size: 16px; font-weight: 700; border-left: 1px solid var(--border); border-right: 1px solid var(--border); padding: 8px 0; }
+    .add-cart-main { display: flex; gap: 12px; margin-bottom: 24px; }
+    .add-cart-main .btn { flex: 1; justify-content: center; padding: 14px; font-size: 14px; }
+    .product-specs { background: var(--light-bg); border-radius: var(--radius-md); padding: 20px; margin-bottom: 24px; border: 1px solid var(--border); }
+    .product-specs h4 { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 12px; }
+    .spec-row { display: flex; justify-content: space-between; padding: 9px 0; font-size: 13px; border-bottom: 1px solid var(--border); }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-key { color: var(--text-muted); }
+    .spec-val { font-weight: 600; color: var(--text-dark); }
+    .delivery-box { border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 16px; display: flex; gap: 12px; align-items: flex-start; background: var(--blue-pale); }
+    .delivery-box strong { font-size: 14px; font-weight: 700; display: block; margin-bottom: 4px; color: var(--blue-dark); }
+    .delivery-box p { font-size: 13px; color: var(--text-mid); margin: 0; }
+    .related-section { padding: 56px 0; background: var(--light-bg); }
+    .related-section h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 28px; }
+    .related-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+
+    /* 3D product image */
+    .product-img-main{transform-style:preserve-3d;transition:box-shadow .4s,transform .4s}
+    .product-img-main:hover{transform:perspective(800px) rotateY(-4deg) rotateX(2deg) scale(1.01);box-shadow:var(--shadow-3d)}
+    /* Price gradient text */
+    .big-price{background:linear-gradient(135deg,var(--ocean),var(--blue-mid));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    /* Qty control 3D */
+    .qty-control{box-shadow:var(--shadow-sm);transition:box-shadow .2s}
+    .qty-control:focus-within{box-shadow:var(--shadow),0 0 0 3px rgba(66,165,245,.12)}
+    /* Spec rows hover */
+    .spec-row{transition:background .2s,padding .2s}
+    .spec-row:hover{background:var(--blue-pale);padding-left:8px;border-radius:6px}
+    /* Delivery box glow */
+    .delivery-box{background:linear-gradient(135deg,var(--blue-pale),rgba(100,181,246,.1));border-color:rgba(100,181,246,.35);box-shadow:0 0 20px rgba(100,181,246,.1)}
+    /* Related section bg */
+    .related-section{position:relative;overflow:hidden}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<div style="background:#fff;position:relative;overflow:hidden"><div class="orb orb-1" style="top:-100px;right:-50px;opacity:.4;width:300px;height:300px"></div><div class="orb orb-3" style="bottom:0;left:-80px;opacity:.3;width:250px;height:250px"></div>
+  <div class="product-detail-layout" id="product-detail"></div>
+</div>
+<section class="related-section">
+  <div class="container">
+    <h2>You May Also Need</h2>
+    <div class="related-grid" id="related-grid"></div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/components.js"></script>
+<script>
+  renderHeader('../'); renderFooter('../');
+  const params = new URLSearchParams(window.location.search);
+  const product = PRODUCTS.find(p => p.id === parseInt(params.get('id'))) || PRODUCTS[0];
+  let qty = 1;
+  document.title = `${product.name} — M.O.B Eki Ventures`;
+  const catLabel = CATEGORIES.find(c => c.id === product.category)?.name || product.category;
+
+  document.getElementById('product-detail').innerHTML = `
+    <div>
+      <div class="product-img-main">
+        <img src="${product.img}" alt="${product.name}">
+        ${product.badge ? `<span class="badge badge-blue">${product.badge}</span>` : ''}
+      </div>
+    </div>
+    <div>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a> ›
+        <a href="shop.html">Shop</a> ›
+        <a href="shop.html?category=${product.category}">${catLabel}</a> ›
+        <span>${product.name}</span>
+      </div>
+      <h1 class="product-title">${product.name}</h1>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+        <div class="product-card-stars">
+          <span class="stars">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5-Math.floor(product.rating))}</span>
+          <span class="review-count">(${product.reviews} reviews)</span>
+        </div>
+        ${product.badge ? `<span class="badge badge-blue">${product.badge}</span>` : ''}
+      </div>
+      <div class="product-price-block">
+        <span class="big-price">₦${product.price.toLocaleString()}</span>
+        <span class="big-price-unit">per ${product.unit}</span>
+      </div>
+      <div class="qty-row">
+        <span class="qty-label">Quantity</span>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="updateQty(-1)">−</button>
+          <div class="qty-display" id="qty-display">1</div>
+          <button class="qty-btn" onclick="updateQty(1)">+</button>
+        </div>
+        <span style="font-size:13px;color:var(--text-muted)">
+          Total: <strong id="line-total" style="color:var(--blue-dark)">₦${product.price.toLocaleString()}</strong>
+        </span>
+      </div>
+      <div class="add-cart-main">
+        <button class="btn btn-outline-blue" onclick="addToCart()">Add to Cart</button>
+        <a href="cart.html" class="btn btn-primary" onclick="addToCart()">Buy Now</a>
+      </div>
+      <div class="product-specs">
+        <h4>Product Specs</h4>
+        <div class="spec-row"><span class="spec-key">Category</span><span class="spec-val">${catLabel}</span></div>
+        <div class="spec-row"><span class="spec-key">Unit</span><span class="spec-val">Per ${product.unit}</span></div>
+        <div class="spec-row"><span class="spec-key">Brand</span><span class="spec-val">${product.name.split(' ')[0]}</span></div>
+        <div class="spec-row"><span class="spec-key">SKU</span><span class="spec-val">MOB-${String(product.id).padStart(4,'0')}</span></div>
+        <div class="spec-row"><span class="spec-key">Availability</span><span class="spec-val" style="color:var(--success)">✓ In Stock</span></div>
+      </div>
+      <div class="delivery-box">
+        <span style="font-size:22px">🚚</span>
+        <div>
+          <strong>Nationwide Delivery Available</strong>
+          <p>Free delivery on orders above ₦500,000. Standard delivery ₦25,000. Estimated 2–5 business days.</p>
+        </div>
+      </div>
+    </div>`;
+
+  function updateQty(d) {
+    qty = Math.max(1, qty + d);
+    document.getElementById('qty-display').textContent = qty;
+    document.getElementById('line-total').textContent = '₦' + (product.price * qty).toLocaleString();
+  }
+  function addToCart() {
+    Cart.add({ id: product.id, name: product.name, price: product.price, unit: product.unit, img: product.img, qty });
+  }
+
+  PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0,4).forEach((p, i) => {
+    document.getElementById('related-grid').innerHTML += `
+      <div class="product-card" style="animation-delay:${i*80}ms">
+        <div class="product-card-img">
+          <img src="${p.img}" alt="${p.name}" loading="lazy">
+          ${p.badge ? `<span class="badge badge-blue">${p.badge}</span>` : ''}
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-cat">${p.category.replace(/-/g,' ')}</div>
+          <div class="product-card-name">${p.name}</div>
+          <div class="product-card-price"><span class="price-main">₦${p.price.toLocaleString()}</span><span class="price-unit">/${p.unit}</span></div>
+          <button class="btn-add-cart" onclick="Cart.add({id:${p.id},name:'${p.name}',price:${p.price},unit:'${p.unit}',img:'${p.img}'})">Add to Cart</button>
+        </div>
+      </div>`;
+  });
+</script>
+</body>
+</html>
