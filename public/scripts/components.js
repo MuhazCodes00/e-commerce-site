@@ -9,7 +9,7 @@ function renderHeader(rootPath = '') {
     { label: 'Plumbing',          cat: 'plumbing' },
   ];
   const navHTML = navLinks.map(n => {
-    const href = n.cat ? `${rootPath}user/shop.html?category=${n.cat}` : `${rootPath}user/shop.html`;
+    const href = n.cat ? `${rootPath}shop.html?category=${n.cat}` : `${rootPath}shop.html`;
     return `<li><a href="${href}">${n.label}</a></li>`;
   }).join('');
 
@@ -26,13 +26,13 @@ function renderHeader(rootPath = '') {
           <input type="text" placeholder="Search for cement, steel, tiles...">
         </div>
         <div class="header-actions">
-          <a href="${rootPath}user/login.html" class="header-action-btn" style="font-size:12px;padding:6px 14px;background:rgba(255,255,255,.1);border-radius:var(--radius-pill);border:1px solid rgba(255,255,255,.2)">Sign In</a>
-          <a href="${rootPath}user/register.html" class="btn btn-primary btn-sm" style="padding:8px 18px;font-size:12px">Register</a>
-          <a href="${rootPath}user/account.html" class="header-action-btn">
+          <a href="${rootPath}login.html" class="header-action-btn" style="font-size:12px;padding:6px 14px;background:rgba(255,255,255,.1);border-radius:var(--radius-pill);border:1px solid rgba(255,255,255,.2)">Sign In</a>
+          <a href="${rootPath}register.html" class="btn btn-primary btn-sm" style="padding:8px 18px;font-size:12px">Register</a>
+          <a href="${rootPath}account.html" class="header-action-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             Account
           </a>
-          <a href="${rootPath}user/cart.html" class="header-action-btn cart-btn">
+          <a href="${rootPath}cart.html" class="header-action-btn cart-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
             Cart
             <span class="cart-badge">0</span>
@@ -71,16 +71,16 @@ function renderFooter(rootPath = '') {
           <p>Supplying premium construction materials for residential, commercial, and industrial projects across Nigeria since 2009.</p>
         </div>
         <div class="footer-col"><h4>Products</h4><ul>
-          <li><a href="${rootPath}user/shop.html?category=cement-concrete">Cement & Concrete</a></li>
-          <li><a href="${rootPath}user/shop.html?category=steel-iron">Steel & Iron</a></li>
-          <li><a href="${rootPath}user/shop.html?category=tiles-flooring">Tiles & Flooring</a></li>
-          <li><a href="${rootPath}user/shop.html?category=timber-wood">Timber & Wood</a></li>
-          <li><a href="${rootPath}user/shop.html?category=paints">Paints & Finishes</a></li>
-          <li><a href="${rootPath}user/shop.html?category=plumbing">Plumbing</a></li>
+          <li><a href="${rootPath}shop.html?category=cement-concrete">Cement & Concrete</a></li>
+          <li><a href="${rootPath}shop.html?category=steel-iron">Steel & Iron</a></li>
+          <li><a href="${rootPath}shop.html?category=tiles-flooring">Tiles & Flooring</a></li>
+          <li><a href="${rootPath}shop.html?category=timber-wood">Timber & Wood</a></li>
+          <li><a href="${rootPath}shop.html?category=paints">Paints & Finishes</a></li>
+          <li><a href="${rootPath}shop.html?category=plumbing">Plumbing</a></li>
         </ul></div>
         <div class="footer-col"><h4>Company</h4><ul>
-          <li><a href="${rootPath}user/about.html">About Us</a></li>
-          <li><a href="${rootPath}user/about.html#contact">Contact</a></li>
+          <li><a href="${rootPath}about.html">About Us</a></li>
+          <li><a href="${rootPath}about.html#contact">Contact</a></li>
           <li><a href="${rootPath}admin/index.html" style="font-weight:600;color:var(--blue-light)">Admin Portal 🔑</a></li>
           <li><a href="#">Bulk Orders</a></li>
         </ul></div>

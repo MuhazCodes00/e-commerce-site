@@ -78,8 +78,7 @@ function initSearch() {
   input.addEventListener('keydown', e => {
     if (e.key === 'Enter' && input.value.trim()) {
       const q = encodeURIComponent(input.value.trim());
-      const base = window.location.pathname.includes('/user/') ? '' : 'user/';
-      window.location.href = `${base}shop.html?search=${q}`;
+      window.location.href = `shop.html?search=${q}`;
     }
   });
 }

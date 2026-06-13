@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Account — M.O.B Eki Ventures</title>
-  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="styles/main.css">
   <style>
     .order-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius-md); padding:20px 24px; margin-bottom:12px; transition:border-color .2s,box-shadow .2s; }
     .order-card:hover { border-color:var(--blue-light); box-shadow:var(--shadow-sm); }
@@ -82,7 +82,7 @@
         Profile Settings
       </a>
       <hr class="account-nav-divider">
-      <a class="account-nav-item signout" href="../index.html">
+      <a class="account-nav-item signout" href="index.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
         Sign Out
       </a>
@@ -119,10 +119,10 @@
   </div>
 </div>
 <div id="site-footer"></div>
-<script src="../scripts/main.js"></script>
-<script src="../scripts/components.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/components.js"></script>
 <script>
-  renderHeader('../'); renderFooter('../');
+  renderHeader(''); renderFooter('');
   function switchTab(tab) {
     ['orders','saved','addresses','profile'].forEach(t => {
       document.getElementById('tab-'+t).style.display = t===tab ? 'block' : 'none';

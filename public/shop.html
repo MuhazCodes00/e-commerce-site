@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop — M.O.B Eki Ventures</title>
-  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="styles/main.css">
   <style>
     .shop-layout { display: grid; grid-template-columns: 280px 1fr; gap: 28px; max-width: 1280px; margin: 0 auto; padding: 36px 32px; }
     .shop-sidebar { height: fit-content; position: sticky; top: 100px; display: flex; flex-direction: column; gap: 16px; }
@@ -118,10 +118,10 @@
 </div>
 
 <div id="site-footer"></div>
-<script src="../scripts/main.js"></script>
-<script src="../scripts/components.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/components.js"></script>
 <script>
-  renderHeader('../'); renderFooter('../');
+  renderHeader(''); renderFooter('');
   const params = new URLSearchParams(window.location.search);
   let activeCategory = params.get('category') || '';
   let searchQuery    = params.get('search') || '';

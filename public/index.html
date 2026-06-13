@@ -78,8 +78,8 @@
       <h1>Quality Building<br>Materials, <em>Delivered to<br>You.</em></h1>
       <p>M.O.B Eki Ventures supplies premium construction materials for residential, commercial, and industrial projects across Nigeria.</p>
       <div class="hero-ctas">
-        <a href="user/shop.html" class="btn btn-primary">Shop Now →</a>
-        <a href="user/about.html#contact" class="btn btn-outline">Request Quote</a>
+        <a href="shop.html" class="btn btn-primary">Shop Now →</a>
+        <a href="about.html#contact" class="btn btn-outline">Request Quote</a>
       </div>
     </div>
     <div class="stats-grid">
@@ -98,7 +98,7 @@
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header">
       <div><span class="section-label">Browse by Category</span><h2 class="section-title">What Are You Building?</h2></div>
-      <a href="user/shop.html" class="view-all">All categories →</a>
+      <a href="shop.html" class="view-all">All categories →</a>
     </div>
     <div class="categories-grid" id="categories-grid"></div>
   </div>
@@ -109,7 +109,7 @@
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header">
       <div><span class="section-label">Handpicked</span><h2 class="section-title">Featured Products</h2></div>
-      <a href="user/shop.html" class="view-all">View all →</a>
+      <a href="shop.html" class="view-all">View all →</a>
     </div>
     <div class="products-grid" id="featured-products"></div>
   </div>
@@ -124,7 +124,7 @@
     <h2>Need Large Quantities?</h2>
     <p>Competitive pricing for contractors and developers. Get a custom quote for your project.</p>
     <div class="bulk-cta-btns">
-      <a href="user/about.html#contact" class="btn btn-primary" style="background:#fff;color:var(--blue)">Request Quote</a>
+      <a href="about.html#contact" class="btn btn-primary" style="background:#fff;color:var(--blue)">Request Quote</a>
       <a href="tel:08034567890" class="btn btn-outline">Call Us Now</a>
     </div>
   </div>
@@ -152,7 +152,7 @@
   renderHeader(''); renderFooter(''); renderTrustBar();
   CATEGORIES.forEach((cat,i) => {
     document.getElementById('categories-grid').innerHTML += `
-      <a href="user/shop.html?category=${cat.id}" class="cat-card" style="animation:fadeUp .4s ease ${i*60}ms both">
+      <a href="shop.html?category=${cat.id}" class="cat-card" style="animation:fadeUp .4s ease ${i*60}ms both">
         <span class="cat-card-icon">${cat.icon}</span>
         <div class="cat-card-name">${cat.name}</div>
         <div class="cat-card-count">${cat.count} items</div>
