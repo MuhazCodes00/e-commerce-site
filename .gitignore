@@ -1,9 +1,34 @@
+<<<<<<< HEAD
 # Logs
 logs
+=======
+# Firebase build and deployment files
+/firebase-debug.log
+/firebase-debug.*.log
+.firebaserc
+
+# Firebase Hosting
+/firebase.json
+*.cache
+hosting/.cache
+
+# Firebase Functions
+/functions/node_modules/
+/functions/.env
+/functions/package-lock.json
+
+# Firebase Emulators
+/firebase-*.zip
+/.firebase/
+/emulator-ui/
+
+# Logs
+>>>>>>> 5f95ae463f6565d1bcec8fc5456f31d6d8b86141
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 firebase-debug.log*
 firebase-debug.*.log*
 
@@ -67,3 +92,8 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+=======
+
+# Environment files (local configs)
+/.env.*
+>>>>>>> 5f95ae463f6565d1bcec8fc5456f31d6d8b86141
